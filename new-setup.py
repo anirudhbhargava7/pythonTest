@@ -17,9 +17,11 @@ os.system(git_install_cmd)
 add_openjdk_apt_repo = "sudo add-apt-repository ppa:openjdk-r/ppa";
 os.system(add_openjdk_apt_repo)
 
+#run update
 update_apt_get = "sudo apt-get update"
 os.system(update_apt_get)
 
+#install java openjdk 8
 install_openjdk8 = "sudo apt-get install openjdk-8-jdk"
 os.system(install_openjdk8)
 
@@ -37,17 +39,25 @@ f.close()
 
 #Download and Install Docker
 #Docker for Tessa 19.1 == Bionic for Ubuntu 18.04
+
 download_docker = "wget -O docker.deb https://download.docker.com/linux/ubuntu/dists/bionic/pool/stable/amd64/docker-ce_18.09.6~3-0~ubuntu-bionic_amd64.deb"
 os.system(download_docker)
 install_docker = "sudo dpkg -i docker.deb"
 os.system(install_docker)
+
+download_containerdio = "wget -O containerd-io.deb https://download.docker.com/linux/ubuntu/dists/bionic/pool/stable/amd64/containerd.io_1.2.5-1_amd64.deb"
+os.system(dowload_containerdio)
+install_containerdio = "sudo dpkg -i containerd-io.deb"
+os.system(install_containerdio)
+
 download_docker_cli = "wget -O docker-cli.deb https://download.docker.com/linux/ubuntu/dists/bionic/pool/stable/amd64/docker-ce-cli_18.09.6~3-0~ubuntu-bionic_amd64.deb"
 os.system(download_docker_cli)
 install_docker_cli = "sudo dpkg -i docker-cli.deb"
-download_containerdio = "wget -O containerd-io.deb https://download.docker.com/linux/ubuntu/dists/bionic/pool/stable/amd64/containerd.io_1.2.5-1_amd64.deb"
-install_containerdio = "sudo dpkg -i containerd-io.deb"
+os.system(install_docker_cli)
+
 install_docker_compose = "sudo apt-get install docker-compose"
 os.system(install_docker_compose)
+
 os.system("sudo docker-compose version")
 print("Adding the $USER to docker group")
 os.system("sudo usermod -aG docker $USER")
